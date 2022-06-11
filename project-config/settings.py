@@ -14,15 +14,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # allauth
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
     # Applications
     'ckeditor',
     'cvbuilder.apps.CvbuilderConfig',
+    'accounts'
 ]
 
 CKEDITOR_CONFIGS = {
@@ -61,8 +56,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # All Auth
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -79,14 +72,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},]
 
-# allauth
-SITE_ID = 1
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
+
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
