@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('accounts/', include('accounts.urls', namespace="accounts")),
-    path('', include('cvbuilder.urls')),
+    path('resume/', include('cvbuilder.urls')),
 ]
 
 
