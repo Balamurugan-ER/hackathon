@@ -2,14 +2,15 @@
 
 This project provides template to create to build resume in online , download and share the resume to others by either link or QR code.
 
-# Technologies and Tools
-Language - Python 3.6 or later
-Backend Framework - Django 3.1.7
-Database -SQLite (Development) and POSTGRESQL (deployment)
-DBMS - POSTGRESQL
-Version-control - Git and GitHub
-Style Libraries - Bootstrap
-Other - HTML, JS
+## Technologies and Tools
+
+1. **Language** - Python 3.6 or later
+2. **Backend Framework** - Django 3.1.7
+3. **Database** -SQLite (Development) POSTGRESQL (Deployment)
+4. **DBMS** - POSTGRESQL 
+5. **Version-control** - Git and GitHub
+6. **Style Libraries** - Bootstrap
+7. **others** - HTML, JS
 
 
 WELCOME PAGE
