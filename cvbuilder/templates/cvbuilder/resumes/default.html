@@ -5,6 +5,7 @@
 <head>
     <title>{% if resume.name %}{{resume.name}} - {% endif %}Resume</title>
     <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -12,9 +13,28 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <style>
+        body
+        {
+            margin-bottom: 100px;
+        }
+        #resume
+        {
+              box-shadow: 1px 1px 8px #888888;
+        }
+        #qrsection
+        {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
         @media print{
             .print-invisible{
                 display: none;
+            }
+            .header
+            {
+                padding: 15px;
             }
             a {
                 text-decoration: none !important;
@@ -34,12 +54,11 @@
 </head>
 
 <body>
-    <article class="text-center position-relative bgwhite">
-
-        <!--STYLE DIV-->
-        <div class="mx-auto text-left bg-white" style="max-width: 1125px;" id="resume"> <!-- Removed: min-height: calc(100vh); -->
-
-            {% if not shared_view %}
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div>
+                {% if not shared_view %}
                 <div class="print-invisible row mt-2 mb-2">
                     <div class="col-4">
                         <a class="btn btn-secondary btn-block" href="{% url 'cvbuilder:MainPage' %}"><i class="fas fa-arrow-left mr-2"></i> Return to Edit</a>
@@ -47,30 +66,30 @@
                     <div class="col-4">
                         <button class="btn btn-info btn-block" onClick="alert(window.location.protocol + '//' + window.location.host + '{% url 'cvbuilder:SharedResumePreview' resume.code %}')"><i class="fas fa-share-alt mr-2"></i> Share your Resume</button>
                     </div>
-                    <input type="hidden"  id="resume_url" value="{% url 'cvbuilder:SharedResumePreview' resume.code %}" />
                     <div class="col-4">
                         <a class="btn btn-warning btn-block"  onclick="window.print()"><i class="fas fa-print mr-2"></i> Download PDF</a>
                     </div>
-                <div id="qrcode" width="100px" height="100px"></div>
                 </div>
             {% endif %}
-
-            <!--HEADER-->
-            <header class="resume-header pt-md-0" id="print">
+            </div>
+            <div id="resume">
+                 <header class="resume-header pt-md-0" id="print">
 
                 <div class="row">
                     <div class="col-9">
                         <div class="row" style="padding-left:15.2px;">
 
                             <!--IMAGE-->
-                            <div style="height:220px;">
+                            <div class="col-5 mt-2">
                                 {% if resume.image %}
-                                    <img class="img-fluid" style="height: 220px; width:auto;" src="{{ resume.image.url }}" alt="">
+{#                                    <img class="img-fluid" style="height: 220px; width:auto;" src="{{ resume.image.url }}" alt="">#}
+                                    <img src="{{ resume.image.url }}" class="rounded-circle" alt="Profile" width="200px" height="200px">
+
                                 {% endif %}
                             </div>
 
                             <!--PRIMARY INFO-->
-                            <div class="pl-5 mt-4">
+                            <div class="pl-5 mt-4 col-7">
                                 <h1 class="name mt-0 mb-1 text-white text-uppercase">{{ resume.name }}</h1>
                                 {% if resume.description %}
                                     <div class="title mb-3">{{ resume.description }}</div>
@@ -255,8 +274,48 @@
                     </div>
                 </div>
             </div>
+
+            </div>
         </div>
-    </article>
+        <div class="col-3" id="qrsection">
+                    <input type="hidden"  id="resume_url" value="{% url 'cvbuilder:SharedResumePreview' resume.code %}" />
+                    <div>
+                        <div id="qrcode" width="100px" height="100px"></div>
+                        <div style="text-align: center"><p>Scan the above QR Code to <br>share this resume</p></div>
+
+                         <div style="text-align: center"><a class="btn btn-info btn-block" href="{% url 'cvbuilder:ResumePreviewv2' %}">Template 2</a></div>
+                    </div>
+
+        </div>
+
+{#    <article class="text-center position-relative bgwhite">#}
+{#    <div class="mx-auto text-left bg-white header" style="max-width: 1125px;">#}
+{#          {% if not shared_view %}#}
+{#                <div class="print-invisible row mt-2 mb-2">#}
+{#                    <div class="col-4">#}
+{#                        <a class="btn btn-secondary btn-block" href="{% url 'cvbuilder:MainPage' %}"><i class="fas fa-arrow-left mr-2"></i> Return to Edit</a>#}
+{#                    </div>#}
+{#                    <div class="col-4">#}
+{#                        <button class="btn btn-info btn-block" onClick="alert(window.location.protocol + '//' + window.location.host + '{% url 'cvbuilder:SharedResumePreview' resume.code %}')"><i class="fas fa-share-alt mr-2"></i> Share your Resume</button>#}
+{#                    </div>#}
+{#                    <input type="hidden"  id="resume_url" value="{% url 'cvbuilder:SharedResumePreview' resume.code %}" />#}
+{#                    <div class="col-4">#}
+{#                        <a class="btn btn-warning btn-block"  onclick="window.print()"><i class="fas fa-print mr-2"></i> Download PDF</a>#}
+{#                    </div>#}
+{#                <div id="qrcode" width="100px" height="100px"></div>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#    </div>#}
+{##}
+{#        <!--STYLE DIV-->#}
+{#        <div class="mx-auto text-left bg-white" style="max-width: 1125px;" id="resume"> <!-- Removed: min-height: calc(100vh); -->#}
+{##}
+{##}
+{##}
+{#            <!--HEADER-->#}
+{#           #}
+{#        </div>#}
+{#    </article>#}
 </body>
 {% block script %}
 
