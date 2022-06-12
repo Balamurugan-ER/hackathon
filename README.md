@@ -12,6 +12,10 @@ This project provides template to create to build resume in online , download an
 6. **Style Libraries** - Bootstrap
 7. **others** - HTML, JS
 
+## Test Login Details
+
+**User Name** - testuser
+**Password** - 12345
 
 WELCOME PAGE
 ![image](https://user-images.githubusercontent.com/54212165/173218730-00312bf5-d557-441b-9e60-0ce273595262.png)
