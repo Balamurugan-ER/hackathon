@@ -4,7 +4,6 @@ import random
 import string
 
 
-
 class Template(models.Model):
     name = models.CharField(max_length=65)
 

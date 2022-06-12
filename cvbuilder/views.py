@@ -123,35 +123,6 @@ class ResumePreview(LoginRequiredMixin, View):
         }
         return render(request, template_name, ctx)
 
-    # --- RESUME VIEW AS HTML ---- #
-
-class preview(LoginRequiredMixin, View):
-        def get(self, request):
-            resume = Resume.objects.get(user=request.user)
-            template = resume.template
-
-            # Default Template Values
-            template_name = 'cvbuilder/resumes/v2.html'
-            color = 'blue'
-
-            if not template is None:
-                if not template.name == "":
-                    template_name = 'cvbuilder/resumes/' + template.name.split(" ")[0].lower() + '.html'
-                    color = template.name.split(" ")[1]
-
-            if not resume.user == request.user: return redirect(reverse('pages:NoAccess'))
-            ctx = {
-                'resume': resume,
-                'experiences': resume.experiences.all().order_by('order'),
-                'skills': resume.skills.all().order_by('order'),
-                'educations': resume.educations.all().order_by('order'),
-                'languages': resume.languages.all().order_by('order'),
-                'achievements': resume.achievements.all().order_by('order'),
-                'publications': resume.publications.all().order_by('order'),
-                'color': color.lower(),
-            }
-            return render(request, template_name, ctx)
-
 
 # --- SHARED RESUME VIEW AS HTML ---- #
 
