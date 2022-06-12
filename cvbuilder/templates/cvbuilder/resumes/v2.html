@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="{%  static '/cvbuilder/default_'|add:color|add:'.css' %}">
+    <link rel="stylesheet" href="{%  static '/cvbuilder/default_green.css' %}">
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 
     <style>
@@ -283,7 +283,7 @@
                         <div id="qrcode" width="100px" height="100px"></div>
                         <div style="text-align: center"><p>Scan the above QR Code to <br>share this resume</p></div>
 
-                         <div style="text-align: center"><a class="btn btn-info btn-block" href="{% url 'cvbuilder:ResumePreviewv2' %}">Template 2</a></div>
+                         <div style="text-align: center"><a class="btn btn-info btn-block" href="{% url 'cvbuilder:ResumePreview' %}">Template V1 </a></div>
                     </div>
 
         </div>

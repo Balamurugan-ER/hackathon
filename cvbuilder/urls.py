@@ -6,6 +6,7 @@ app_name = 'cvbuilder'
 urlpatterns = [
     path('', views.MainPage.as_view(), name='MainPage'),
     path('preview/', views.ResumePreview.as_view(), name='ResumePreview'),
+    path('preview/v2/', views.preview.as_view(), name='ResumePreviewv2'),
 
     path('create_experience/', views.CreateExperience.as_view(), name='CreateExperience'),
     path('update_experience/<str:pk>', views.UpdateExperience.as_view(), name='UpdateExperience'),
