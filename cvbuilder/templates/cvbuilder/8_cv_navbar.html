@@ -1,8 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 {% for message in messages %}
     <div class="alert alert-info mb-0 text-center" role="alert">
         {{ message }}
@@ -15,76 +10,19 @@
     }
 </style>
 
-<div class="flexbox">
-        <div class="sidebar vh-100">
-            <nav class="text-start">
-                <h4>Resume Builder</h6>
-                    <hr>
-                <ul class="navbar-nav" id="nav">
-                    <li class="nav-item  p-2 active" href="{% url 'cvbuilder:MainPage' %}">Resume Details </li>
-                    <li class="nav-item  p-2" href="">Experiences</li>
-                    <li class="nav-item  p-2" href="">Skills</li>
-                    <li class="nav-item  p-2" href="">Education</li>
-                    <li class="nav-item  p-2" href="">Languages</li>
-                    <li class="nav-item  p-2" href="">Acheivements</li>
-                    <li class="nav-item  p-2" >Publications</li>
-                </ul>
-            </nav>
-        </div>
-    <div class="content">
-            <div class="top">
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">New</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreateExperience' %}">Experience</a>
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreateSkill' %}">Skills</a>
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreateEducation' %}">Education</a>
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreateLanguage' %}">Languages</a>
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreateAchievement' %}">Acheivements</a>
-                      <a class="dropdown-item" href="{% url 'cvbuilder:CreatePublication' %}">Publications</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-outline-primary preview" href="{% url 'cvbuilder:ResumePreview' %}">Preview</button>
-
-            </div>
-            <div class="bottom">
-
-            </div>
-
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <button class="navbar-toggler mb-1 " style="position: absolute; left:0%" data-toggle="collapse" data-target="#navbarForCvBuilder">
+        <span class="navbar-toggler-icon "></span>
+    </button>
+    <div class="navbar-collapse collapse  justify-content-center" id="navbarForCvBuilder" >
+        <ul class="nav navbar-nav ">
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:MainPage' %}"><i class="fas fa-eye"></i> Resume Details</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreateExperience' %}"><i class="fas fa-plus"></i> Add Experience</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreateSkill' %}"><i class="fas fa-plus"></i> Add Skill</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreateEducation' %}"><i class="fas fa-plus"></i> Add Education</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreateLanguage' %}"><i class="fas fa-plus"></i> Add Language</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreateAchievement' %}"><i class="fas fa-plus"></i> Add Achievement</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:CreatePublication' %}"><i class="fas fa-plus"></i> Add Publication</a>
+            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="{% url 'cvbuilder:ResumePreview' %}"><i class="fas fa-search"></i> Preview Your Resume</a>
     </div>
-
-
-            <a class="btn btn-outline-light mr-1 mt-1 mb-1" href="><i class="fas fa-search"></i> Preview Your Resume</a>
-
-    <script>
-        const nav = document.getElementById("nav");
-        const content = document.querySelector(".bottom");
-        var nav_items = document.querySelectorAll(".nav-item");
-        var last_active = nav_items[0];
-        // content.innerHTML = nav_items[0].innerHTML;
-        nav_items.forEach(e => {
-            e.setAttribute('onclick',"navClicked(this)");
-        })
-
-        function navClicked(ele)
-        {
-            setActive(ele);
-            // content.innerHTML = ele.innerHTML;
-        }
-
-
-        function setActive(ele)
-        {
-            if(last_active!=null && last_active.classList.contains('active'))
-            {
-                last_active.classList.remove("active")
-            }
-            ele.classList.add('active')
-            last_active=ele;
-        }
-    </script>
+</nav>
